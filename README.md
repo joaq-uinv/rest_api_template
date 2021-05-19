@@ -8,7 +8,7 @@
   </a>
 </p>
 
-> Template to develop a RESTful API.
+> Template to develop a RESTful API with Node, Express and Mongo.
 
 ## Prerequisites
 
@@ -32,6 +32,10 @@ npm run start
 ```sh
 npm run test
 ```
+
+## Documentation
+
+![Documentation](./docs_img.png)
 
 ## Author
 

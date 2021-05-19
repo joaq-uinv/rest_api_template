@@ -89,9 +89,18 @@ const putRequestValidations = [
   _isRoleValid,
 ];
 
+//validations for the /users/:id DELETE endpoint
+const deleteRequestValidations = [
+  commonValidationResult,
+  _idRequired,
+  _isMongoID,
+  _idExists,
+];
+
 module.exports = {
   getAllRequestValidations,
   getByIdRequestValidations,
   postRequestValidations,
   putRequestValidations,
+  deleteRequestValidations,
 };

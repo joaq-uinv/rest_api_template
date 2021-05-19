@@ -83,7 +83,7 @@ const createUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   try {
-    //params sent in the request i.e the user's id in the route /:id
+    //params sent in the request i.e the user's id inthe route /:id
     const { id } = req.params;
     //data coming from the client
     let user = req.body;

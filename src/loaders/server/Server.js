@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const swaggerUI = require("swagger-ui-express");
 const config = require("../../config/config");
 const routes = require("../../routes/userRoutes");
+const swaggerJSON = require("../swagger/swagger.json");
 
 class Server {
   constructor() {
@@ -11,7 +12,7 @@ class Server {
     this.prefix = config.api.prefix;
     this._middlewares();
     this._routes();
-    // this._swaggerConfig();
+    this._swaggerConfig();
   }
 
   _middlewares() {
@@ -23,8 +24,13 @@ class Server {
     this.app.use(`${this.prefix}/users`, routes); //use the routes created in the users' routes file in the /api/v1 route
   }
 
-  //   _swaggerConfig() {
-  //     this.app.use(config.swagger.path, swaggerUI.serve, swaggerUI.setup()); //!require swagger.json file
+  _swaggerConfig() {
+    this.app.use(
+      config.swagger.path,
+      swaggerUI.serve,
+      swaggerUI.setup(swaggerJSON)
+    );
+  }
 
   //!ADD ERROR HANDLERS
 

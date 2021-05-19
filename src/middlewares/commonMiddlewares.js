@@ -11,11 +11,23 @@ const AppError = require("../handlers/AppError");
  */
 
 const commonValidationResult = (req, res, next) => {
+  // Finds the validation errors in this request and wraps them in an object with handy functions
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    throw new AppError("Validation error", 400, errors.errors);
+    throw new AppError("Validation error", 400, errors.errors); //!SEE BELOW TO SEE THE .ERRORS MODEL
   }
   next();
 };
 
 module.exports = { commonValidationResult };
+
+//!ERRORS MODEL
+// {
+//   "errors": [
+//     {
+//       "location": "body",
+//       "msg": "Invalid value",
+//       "param": "username"
+//     }
+//   ]
+// }

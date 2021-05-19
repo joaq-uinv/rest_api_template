@@ -2,14 +2,15 @@ const express = require("express");
 const morgan = require("morgan");
 const swaggerUI = require("swagger-ui-express");
 const config = require("../../config/config");
-const routes = require("../routes/userRoutes");
+const routes = require("../../routes/userRoutes");
 
 class Server {
   constructor() {
     this.app = express();
     this.port = config.port;
-    this.prefix = config.prefix;
+    this.prefix = config.api.prefix;
     this._middlewares();
+    this._routes();
     // this._swaggerConfig();
   }
 
@@ -19,7 +20,7 @@ class Server {
   }
 
   _routes() {
-    this.app.use(`${this.prefix}`, routes); //use the routes created in the users' routes file in the /api/v1 route
+    this.app.use(`${this.prefix}/users`, routes); //use the routes created in the users' routes file in the /api/v1 route
   }
 
   //   _swaggerConfig() {

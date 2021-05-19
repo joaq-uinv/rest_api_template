@@ -1,6 +1,6 @@
 //the repo layer is the one that communicates with the db i.e the model layer
 const bcrypt = require("bcrypt");
-const User = require("../models/user");
+const User = require("../models/users");
 
 class UserRepository {
   constructor() {}

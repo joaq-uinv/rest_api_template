@@ -6,6 +6,7 @@ const {
   updateUser,
   deleteUser,
 } = require("../controllers/userControllers");
+
 const router = Router();
 
 router.get("/", getAllUsers);

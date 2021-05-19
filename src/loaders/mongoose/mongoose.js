@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const config = require("../../config/config");
+const logger = require("../logger/logger");
 
 const connectToDB = async () => {
   try {
@@ -10,7 +11,7 @@ const connectToDB = async () => {
       useCreateIndex: true,
     });
   } catch (err) {
-    console.log(err);
+    logger.info(err);
   }
 };
 

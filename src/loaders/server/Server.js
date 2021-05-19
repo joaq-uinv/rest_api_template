@@ -4,6 +4,7 @@ const swaggerUI = require("swagger-ui-express");
 const config = require("../../config/config");
 const routes = require("../../routes/userRoutes");
 const swaggerJSON = require("../swagger/swagger.json");
+const logger = require("../logger/logger");
 
 class Server {
   constructor() {
@@ -39,7 +40,7 @@ class Server {
     this.app.listen(this.port, (error) => {
       //if there's an error, the app will shut down
       if (error) {
-        console.error(error);
+        logger.info(error);
         process.exit(1);
         return;
       }

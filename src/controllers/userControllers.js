@@ -22,7 +22,6 @@ const getAllUsers = async (req, res, next) => {
     //parse response
     res.json(new Success(users));
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -45,7 +44,6 @@ const getUserByID = async (req, res, next) => {
     //parse res
     res.json(new Success(user));
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -67,7 +65,6 @@ const createUser = async (req, res, next) => {
     user = await userServices.create(user);
     res.status(201).json(new Success(user)); //the 201 code indicates that the request has succeeded and has led to the creation of a resource
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -83,7 +80,7 @@ const createUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   try {
-    //params sent in the request i.e the route /:id
+    //params sent in the request i.e the user's id inthe route /:id
     const { id } = req.params;
     //data coming from the client
     let user = req.body;
@@ -92,7 +89,6 @@ const updateUser = async (req, res, next) => {
     //parse response
     res.json(new Success(updatedUser));
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -115,7 +111,6 @@ const deleteUser = async (req, res, next) => {
     //parse response
     res.json(new Success(user));
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

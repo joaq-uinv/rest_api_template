@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const swaggerUI = require("swagger-ui-express");
 const config = require("../../config/config");
+const routes = require("../routes/userRoutes");
 
 class Server {
   constructor() {
@@ -17,8 +18,14 @@ class Server {
     this.app.use(morgan("tiny")); //log endpoint and status of the response
   }
 
+  _routes() {
+    this.app.use(`${this.prefix}`, routes); //use the routes created in the users' routes file in the /api/v1 route
+  }
+
   //   _swaggerConfig() {
   //     this.app.use(config.swagger.path, swaggerUI.serve, swaggerUI.setup()); //!require swagger.json file
+
+  //!ADD ERROR HANDLERS
 
   async start() {
     //app will listen on port set in config file

@@ -44,7 +44,7 @@ class AuthServices {
 
       return { token, user: user.name, role: user.role };
     } catch (error) {
-      console.log(error); //!replace with logger file in prod
+      logger.info(error);
     }
   }
 }

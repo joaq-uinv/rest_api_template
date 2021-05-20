@@ -53,7 +53,7 @@ class AuthServices {
       //check token is passed as a param
       !token && new AppError("Authentication failed. Token required", 401);
 
-      //check the token is the generated automatically
+      //check the token is the one generated automatically
       let id;
       try {
         const obj = jwt.verify(token, config.authentication.secret);

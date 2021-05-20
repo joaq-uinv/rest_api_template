@@ -3,7 +3,7 @@
   "info": {
     "title": "REST API Template",
     "description": "Template to build REST APIs with Node, Express and Mongo.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "contact": {
       "email": "villanuevajoaquin94@gmail.com"
     }
@@ -168,6 +168,28 @@
           }
         }
       }
+    },
+    "/login": {
+      "post": {
+        "tags": ["login"],
+        "summary": "Login with an existing user",
+        "description": "",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The user was logged in."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -225,6 +247,22 @@
             "description": "Verify if the user has the right permissions to perform a certain action. The permissions granted depend on the user's role.",
             "type": "Boolean",
             "default": true
+          }
+        }
+      },
+      "Login": {
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "description": "The user's e-mail.",
+            "type": "string",
+            "example": "joaquin@mail.com"
+          },
+          "password": {
+            "description": "The user's password.",
+            "type": "string",
+            "example": "123456"
           }
         }
       }

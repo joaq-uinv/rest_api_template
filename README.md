@@ -35,11 +35,20 @@ npm run test
 
 ## Documentation
 
-![Documentation](./docs_img.png)
+![Documentation](./docs_img_updated.png)
 
 ## Author
 
 👤 **Joaquín Villanueva**
+
+- Website: https://j-villanueva.web.app
+- Twitter: [@\_JoaquinScript](https://twitter.com/_JoaquinScript)
+- Github: [@joaq-uinv](https://github.com/joaq-uinv)
+- LinkedIn: [@joaquinvillanueva](https://linkedin.com/in/joaquinvillanueva)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/joaq-uinv/rest_api_template/issues). You can also take a look at the [contributing guide](https://github.com/joaq-uinv/rest_api_template/blob/master/CONTRIBUTING.md).
 
 ## Show your support
 

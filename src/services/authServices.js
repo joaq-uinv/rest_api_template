@@ -72,7 +72,7 @@ class AuthServices {
     }
   }
 
-  //check the user's permissions according to its role
+  //check the user's permissions according to its role. only admins will be able to post, update and delete users
   isRoleValid(user, ...roles) {
     if (!roles.includes(user.role)) {
       throw new AppError(

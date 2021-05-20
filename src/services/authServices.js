@@ -68,7 +68,7 @@ class AuthServices {
       //check if the user with the token is enabled
       !user.enable && new AppError("Authentication failed. User disabled", 401);
     } catch (error) {
-      console.log(error); //!replace with logger file
+      logger.info(error);
     }
   }
 

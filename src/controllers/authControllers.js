@@ -8,6 +8,8 @@ const Sucess = require("../handlers/SucessHandler");
  * @param {express.Request} req
  * @param {express.Response} res
  * @param {express.next} next
+ * @description post request to login with an existing user
+ * @route /login
  */
 
 const login = async (req, res, next) => {
@@ -17,7 +19,6 @@ const login = async (req, res, next) => {
     //parse data coming from body
     res.json(new Sucess(await authServices.login(email, password)));
   } catch (error) {
-    console.log(error); //!replace
     next(error);
   }
 };

@@ -2,7 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const swaggerUI = require("swagger-ui-express");
 const config = require("../../config/config");
-const routes = require("../../routes/userRoutes");
+const userRoutes = require("../../routes/userRoutes");
+const authRoute = require("../../routes/authRoutes");
 const swaggerJSON = require("../swagger/swagger.json");
 const logger = require("../logger/logger");
 
@@ -22,7 +23,8 @@ class Server {
   }
 
   _routes() {
-    this.app.use(`${this.prefix}/users`, routes); //use the routes created in the users' routes file in the /api/v1 route
+    this.app.use(`${this.prefix}/users`, userRoutes); //use the routes created in the users' routes file in the /api/v1 route
+    this.app.use("/", authRoute); //use the routes created in the auth route file in the /api/v1 route
   }
 
   _swaggerConfig() {

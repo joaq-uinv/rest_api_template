@@ -35,7 +35,7 @@ npm run test
 
 ## Documentation
 
-![Documentation](./docs_img.png)
+![Documentation](./docs_img_updated.png)
 
 ## Author
 

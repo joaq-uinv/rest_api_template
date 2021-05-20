@@ -47,6 +47,41 @@ class AuthServices {
       logger.info(error);
     }
   }
+
+  async isTokenValid(token) {
+    try {
+      //check token is passed as a param
+      !token && new AppError("Authentication failed. Token required", 401);
+
+      //check the token is the generated automatically
+      let id;
+      try {
+        const obj = jwt.verify(token, config.authentication.secret);
+        id = obj.id;
+      } catch (error) {
+        throw new AppError("Authentication failed. Invalid token", 401);
+      }
+
+      //check if a user with the previously generated token exists in the db
+      const user = await this.userServices.getByID(id);
+      !user && new AppError("Authentication failed. Invalid token", 401);
+      //check if the user with the token is enabled
+      !user.enable && new AppError("Authentication failed. User disabled", 401);
+    } catch (error) {
+      logger.info(error);
+    }
+  }
+
+  //check the user's permissions according to its role. only admins will be able to post, update and delete users
+  isRoleValid(user, ...roles) {
+    if (!roles.includes(user.role)) {
+      throw new AppError(
+        "Authorization failed. User without the necessary permissions",
+        403
+      );
+    }
+    return true;
+  }
 }
 
 module.exports = AuthServices;

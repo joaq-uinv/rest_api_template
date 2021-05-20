@@ -3,6 +3,7 @@ const { check } = require("express-validator");
 const AppError = require("../../handlers/AppError");
 const { USER_ROLE, ADMIN_ROLE } = require("../../constants/constants");
 const { commonValidationResult } = require("../commonMiddlewares");
+const { validJWT, hasRole } = require("../auth/authMiddlewares");
 const UserServices = require("../../services/userServices");
 const userServices = new UserServices();
 
@@ -54,19 +55,22 @@ const _optionalMailExists = check("email")
   });
 
 //validations for the /users GET endpoint
-const getAllRequestValidations = [commonValidationResult];
+const getAllRequestValidations = [commonValidationResult, validJWT];
 
 //validations for the /users/:id GET endpoint
 const getByIdRequestValidations = [
   commonValidationResult,
+  validJWT,
   _idRequired,
   _isMongoID,
   _idExists,
+  hasRole,
 ];
 
 //validations for the /users POST endpoint
 const postRequestValidations = [
   commonValidationResult,
+  validJWT,
   _nameRequired,
   _lastNameRequired,
   _emailRequired,
@@ -75,11 +79,13 @@ const postRequestValidations = [
   _passRequired,
   _isRoleValid,
   _isBirthDateValid,
+  hasRole(ADMIN_ROLE),
 ];
 
 //validations for the /users/:id PUT endpoint
 const putRequestValidations = [
   commonValidationResult,
+  validJWT,
   _idRequired,
   _isMongoID,
   _idExists,
@@ -87,14 +93,17 @@ const putRequestValidations = [
   _optionalMailExists,
   _isBirthDateValid,
   _isRoleValid,
+  hasRole(ADMIN_ROLE),
 ];
 
 //validations for the /users/:id DELETE endpoint
 const deleteRequestValidations = [
   commonValidationResult,
+  validJWT,
   _idRequired,
   _isMongoID,
   _idExists,
+  hasRole(ADMIN_ROLE),
 ];
 
 module.exports = {

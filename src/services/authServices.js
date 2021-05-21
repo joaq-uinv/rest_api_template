@@ -44,7 +44,7 @@ class AuthServices {
 
       return { token, user: user.name, role: user.role };
     } catch (error) {
-      throw error;
+      logger.error(error);
     }
   }
 

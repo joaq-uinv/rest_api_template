@@ -11,7 +11,7 @@ const connectToDB = async () => {
       useCreateIndex: true,
     });
   } catch (err) {
-    logger.info(err);
+    logger.error(err);
   }
 };
 

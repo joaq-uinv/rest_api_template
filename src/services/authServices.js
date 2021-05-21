@@ -44,7 +44,7 @@ class AuthServices {
 
       return { token, user: user.name, role: user.role };
     } catch (error) {
-      logger.info(error);
+      logger.error(error);
     }
   }
 
@@ -53,7 +53,7 @@ class AuthServices {
       //check token is passed as a param
       !token && new AppError("Authentication failed. Token required", 401);
 
-      //check the token is the generated automatically
+      //check the token is the one generated automatically
       let id;
       try {
         const obj = jwt.verify(token, config.authentication.secret);
@@ -67,6 +67,7 @@ class AuthServices {
       !user && new AppError("Authentication failed. Invalid token", 401);
       //check if the user with the token is enabled
       !user.enable && new AppError("Authentication failed. User disabled", 401);
+      return user;
     } catch (error) {
       logger.info(error);
     }

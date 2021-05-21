@@ -21,8 +21,9 @@ const validJWT = async (req, res, next) => {
   try {
     //check if the token is passed throught the request header
     const token = req.header("Authorization");
-    //fetch token from the db and compare it the the one passed through the req header
+    //fetch user from the db with the corresponding token
     const user = await authServices.isTokenValid(token);
+    //set the value of the user key of the request to the user fetched from the db, so that it can be used in the next data flow within the life cycle of express
     req.user = user;
     next();
   } catch (error) {
@@ -46,6 +47,7 @@ const hasRole = (...roles) => {
 const postLoginRequestValidations = [
   commonValidationResult,
   _emailRequired,
+  _isEmailValid,
   _passRequired,
 ];
 

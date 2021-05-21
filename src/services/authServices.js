@@ -44,7 +44,7 @@ class AuthServices {
 
       return { token, user: user.name, role: user.role };
     } catch (error) {
-      logger.info(error);
+      throw error;
     }
   }
 
@@ -67,6 +67,7 @@ class AuthServices {
       !user && new AppError("Authentication failed. Invalid token", 401);
       //check if the user with the token is enabled
       !user.enable && new AppError("Authentication failed. User disabled", 401);
+      return user;
     } catch (error) {
       logger.info(error);
     }

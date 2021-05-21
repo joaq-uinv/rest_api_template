@@ -55,7 +55,7 @@ const _optionalMailExists = check("email")
   });
 
 //validations for the /users GET endpoint
-const getAllRequestValidations = [commonValidationResult, validJWT];
+const getAllRequestValidations = [validJWT, commonValidationResult];
 
 //validations for the /users/:id GET endpoint
 const getByIdRequestValidations = [
@@ -64,7 +64,6 @@ const getByIdRequestValidations = [
   _idRequired,
   _isMongoID,
   _idExists,
-  hasRole,
 ];
 
 //validations for the /users POST endpoint

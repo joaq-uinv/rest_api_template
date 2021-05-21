@@ -3,7 +3,7 @@
   "info": {
     "title": "REST API Template",
     "description": "Template to build REST APIs with Node, Express and Mongo.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "contact": {
       "email": "villanuevajoaquin94@gmail.com"
     }
